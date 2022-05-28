@@ -28,7 +28,7 @@ RUN chmod a+xr /tmp/add-users.sh && \
 RUN pip3 install git+https://github.com/indigo-dc/udocker
 
 # Configuration
-COPY 00-prominence-docker-worker /etc/condor/config.d/
+COPY 00-prominence-worker /etc/condor/config.d/
 
 # Scripts
 COPY worker_health_check.py /usr/local/bin/

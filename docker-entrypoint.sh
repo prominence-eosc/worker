@@ -10,7 +10,13 @@ if [ "$PROMINENCE_WORKER_TYPE" = "dedicated" ]; then
   echo "START = ProminenceWantCluster =?= \"$CONDOR_CLUSTER\" && NODE_IS_HEALTHY =?= True" >> /etc/condor/config.d/docker
 else
   echo "START = NODE_IS_HEALTHY =?= True" >> /etc/condor/config.d/docker
-fi 
+fi
+
+if [ "$PROMINENCE_ALLOW_PARALLEL" = "true" ]; then
+  echo "DedicatedScheduler = \"DedicatedScheduler@$PROMINENCE_SCHEDD_NAME\"" >> /etc/condor/config.d/docker
+  echo "ParallelSchedulingGroup = \$(ProminenceCloud)" >> /etc/condor/config.d/docker
+  echo "STARTD_ATTRS = \$(STARTD_ATTRS), DedicatedScheduler, ParallelSchedulingGroup" >> /etc/condor/config.d/docker
+fi
 
 python3 /usr/local/bin/write-resources.py $CONDOR_CLOUD
 

@@ -30,4 +30,4 @@ docker run -d \
            --privileged=true \
            eoscprominence/worker:latest
 ```           
-where `<hostname>` is the hostname of the worker, `<cloud name>` is the site name, `<server>` is the IP address of the PROMINENCE server, `<region>` is the region, `<owner>` is the name of the group owning this resource. To allow paralle jobs to run set `allow_parallel` to `true`. If the worker should run only a single job, set `worker_type` to `dedicated` and `<id>` to the job id.
+where `<hostname>` is the hostname of the worker, `<cloud name>` is the site name, `<server>` is the IP address of the PROMINENCE server, `<region>` is the region, `<owner>` is the name of the group owning this resource. To allow paralle jobs to run set `allow_parallel` to `true`. If the worker should run only a single job, set `worker_type` to `dedicated` and `<id>` to the job id. In the above it is assume that there is a worker token `token.jwt` in the current directory.

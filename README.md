@@ -5,8 +5,6 @@ Workers can be run directly on bare metal or in a VM, or alternative can be run 
 ```
 export use_hostname="<hostname>"
 export cloud="<cloud name>"
-export storage_mount_point=""
-export storage_mounts=""
 export condor_host="<server>"
 export region="<region>"
 export node_group="<owner>"
@@ -22,7 +20,6 @@ docker run -d \
            -e PROMINENCE_CLOUD=$cloud \
            -e PROMINENCE_REGION=$region \
            -e PROMINENCE_NODE_GROUP=$node_group \
-           -e PROMINENCE_MOUNTPOINT=$storage_mount_point $storage_mounts \
            -v /var/log/condor:/var/log/condor \
            -v /opt/prominence:/home \
            -v ${PWD}/token.jwt:/etc/condor/tokens.d/token.jwt \

@@ -9,7 +9,7 @@ echo "ProminenceNodeGroup = \"$PROMINENCE_NODE_GROUP\"" >> /etc/condor/config.d/
 if [[ ! -z "$PROMINENCE_JOB_ID" ]]; then
   echo "START = ProminenceWantCluster =?= \"$PROMINENCE_JOB_ID\" && NODE_IS_HEALTHY =?= True" >> /etc/condor/config.d/docker
 else
-  echo "START = ProminenceIdentity =?= "alahiff" && NODE_IS_HEALTHY =?= True" >> /etc/condor/config.d/docker
+  echo "START = NODE_IS_HEALTHY =?= True" >> /etc/condor/config.d/docker
 fi
 
 if [[ ! -z "$PROMINENCE_SCHEDD_NAME" ]]; then

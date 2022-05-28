@@ -2,7 +2,7 @@
 Workers can be run directly on bare metal or in a VM, or alternatively can be run inside a Docker container. They can either run
 indefinitely or shutdown after being idle for a specified timeout.
 
-## Example running a worker using Docker
+## Running a worker using Docker
 ```
 docker run -d \
            --net=host \
@@ -28,5 +28,7 @@ Here:
 * `PROMINENCE_SCHEDD_NAME`: (optional) to allow parallel jobs to run set this to the name of the HTCondor schedd
 * `PROMINENCE_JOB_ID`: (optional) if defined the worker will only run the job with this id
 * `PROMINENCE_IDLE_TIMEOUT`: (optional) if defined the worker will shutdown after being idle for this number of seconds
+
+Also, the above example assumes that there is a worker token `token.jwt` in the current directory.
 
 Note that `--privileged=true` is only needed to support the Singularity container runtime. udocker works without this.

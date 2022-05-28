@@ -20,6 +20,7 @@ fi
 
 python3 /usr/local/bin/write-resources.py $CONDOR_CLOUD
 
+# Set ownership of token
 chown condor:condor /etc/condor/tokens.d/token.jwt
 
 # HTCondor execute directory
@@ -30,10 +31,6 @@ chown condor:condor /home/prominence/condor
 mkdir -p /home/user/mounts
 chown -R user:user /home/user
 chown -R user:user /home/user/mounts
-
-if [ -d "$PROMINENCE_MOUNTPOINT" ]; then
-    chown user $PROMINENCE_MOUNTPOINT
-fi
 
 # Logs
 mkdir -p /var/log/condor

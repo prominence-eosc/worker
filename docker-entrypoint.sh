@@ -7,7 +7,7 @@ echo "ProminenceRegion = \"$PROMINENCE_REGION\"" >> /etc/condor/config.d/docker
 echo "ProminenceNodeGroup = \"$PROMINENCE_NODE_GROUP\"" >> /etc/condor/config.d/docker
 
 if [ "$PROMINENCE_WORKER_TYPE" = "dedicated" ]; then
-  echo "START = ProminenceWantCluster =?= \"$CONDOR_CLUSTER\" && NODE_IS_HEALTHY =?= True" >> /etc/condor/config.d/docker
+  echo "START = ProminenceWantCluster =?= \"$PROMINENCE_JOB_ID\" && NODE_IS_HEALTHY =?= True" >> /etc/condor/config.d/docker
 else
   echo "START = NODE_IS_HEALTHY =?= True" >> /etc/condor/config.d/docker
 fi

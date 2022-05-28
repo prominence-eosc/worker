@@ -31,6 +31,6 @@ docker run -d \
            -v ${PWD}/token.jwt:/etc/condor/tokens.d/token.jwt \
            eoscprominence/worker:latest
 ```           
-where `<hostname>` is the hostname of the worker, `<cloud name>` is the site name, `<server>` is the IP address of the PROMINENCE server, `<region>` is the region, `<owner>` is the name of the group owning this resource. To allow paralle jobs to run set `schedd_name` to the name of the schedd. If the worker should run only a single job, set `worker_type` to `dedicated` and `<id>` to the job id. In the above it is assume that there is a worker token `token.jwt` in the current directory. The worker node will shutdown after being idle for `idle_timeout` seconds.
+where `<hostname>` is the hostname of the worker, `<cloud name>` is the site name, `<server>` is the IP address of the PROMINENCE server, `<region>` is the region, `<owner>` is the name of the group owning this resource. To allow parallel jobs to run set `schedd_name` to the name of the schedd. If the worker should run only a single job, set `worker_type` to `dedicated` and `<id>` to the job id. In the above it is assume that there is a worker token `token.jwt` in the current directory. The worker node will shutdown after being idle for `idle_timeout` seconds.
 
 `--privileged=true` is only needed to support the Singularity runtime.

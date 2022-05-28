@@ -1,5 +1,5 @@
 # PROMINENCE worker
-Workers can be run directly on bare metal or in a VM, or alternative can be run inside a Docker container.
+Workers can be run directly on bare metal or in a VM, or alternatively can be run inside a Docker container.
 
 ## Example running a worker using Docker
 ```

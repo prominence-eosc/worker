@@ -8,7 +8,7 @@ export cloud="<cloud name>"
 export condor_host="<server>"
 export region="<region>"
 export node_group="<owner>"
-export cluster="<id>"
+export job_id="<id>"
 export worker_type="shared"
 export allow_parallel="false"
 export schedd_name="<schedd name>"
@@ -24,9 +24,8 @@ docker run -d \
            -e PROMINENCE_REGION=$region \
            -e PROMINENCE_NODE_GROUP=$node_group \
            -e PROMINENCE_SCHEDD_NAME=$schedd_name \
-           -e CONDOR_CLOUD=$cloud \
-           -e CONDOR_CLUSTER=$cluster \
-           -e CONDOR_HOST=$condor_host \           
+           -e PROMINENCE_JOB_ID=$job_id \
+           -e PROMINENCE_COLLECTOR=$condor_host \           
            -v /var/log/condor:/var/log/condor \
            -v /opt/prominence:/home \
            -v ${PWD}/token.jwt:/etc/condor/tokens.d/token.jwt \

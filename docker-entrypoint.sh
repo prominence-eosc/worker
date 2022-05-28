@@ -1,7 +1,7 @@
 #!/bin/sh
-echo "CONDOR_HOST = $CONDOR_HOST" > /etc/condor/config.d/docker
-echo "COLLECTOR_HOST = $CONDOR_HOST:9618" >> /etc/condor/config.d/docker
-echo "CCB_ADDRESS = $CONDOR_HOST:9618" >> /etc/condor/config.d/docker
+echo "CONDOR_HOST = $PROMINENCE_COLLECTOR" > /etc/condor/config.d/docker
+echo "COLLECTOR_HOST = $PROMINENCE_COLLECTOR:9618" >> /etc/condor/config.d/docker
+echo "CCB_ADDRESS = $PROMINENCE_COLLECTOR:9618" >> /etc/condor/config.d/docker
 echo "ProminenceCloud = \"$PROMINENCE_CLOUD\"" >> /etc/condor/config.d/docker
 echo "ProminenceRegion = \"$PROMINENCE_REGION\"" >> /etc/condor/config.d/docker
 echo "ProminenceNodeGroup = \"$PROMINENCE_NODE_GROUP\"" >> /etc/condor/config.d/docker
@@ -18,7 +18,7 @@ if [ "$PROMINENCE_ALLOW_PARALLEL" = "true" ]; then
   echo "STARTD_ATTRS = \$(STARTD_ATTRS), DedicatedScheduler, ParallelSchedulingGroup" >> /etc/condor/config.d/docker
 fi
 
-python3 /usr/local/bin/write-resources.py $CONDOR_CLOUD
+python3 /usr/local/bin/write-resources.py $PROMINENCE_CLOUD
 
 # Set ownership of token
 chown condor:condor /etc/condor/tokens.d/token.jwt

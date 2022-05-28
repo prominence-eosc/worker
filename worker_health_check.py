@@ -5,18 +5,6 @@ import os
 import shutil
 import multiprocessing
 
-# Check for Singularity
-path = None
-try:
-    path = os.path.dirname(distutils.spawn.find_executable('singularity'))
-except:
-    pass
-
-if not path:
-    print('NODE_IS_HEALTHY = False')
-    print('NODE_STATUS = "Singularity_Missing')
-    exit(0)
-
 # Check for udocker
 if not os.path.exists('/usr/local/bin/udocker'):
     print('NODE_IS_HEALTHY = False')

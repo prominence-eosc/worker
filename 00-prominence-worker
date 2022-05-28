@@ -145,7 +145,7 @@ NUM_SLOTS_TYPE_1 = 1
 SLOT_TYPE_1 = cpus=100%,mem=100%,auto
 SLOT_TYPE_1_PARTITIONABLE = TRUE
 
-STARTD_ATTRS = $(STARTD_ATTRS), ProminenceCloud, ProminenceRegion, ProminenceNodes, ProminenceCoresTotal, ProminenceDagJobId, ProminenceInfrastructureId, ProminenceLocation, ProminenceNodeGroup
+STARTD_ATTRS = $(STARTD_ATTRS), ProminenceCloud, ProminenceRegion, ProminenceInfrastructureId, ProminenceNodeGroup
 
 EXECUTE = /home/prominence/condor
 

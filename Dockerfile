@@ -33,7 +33,7 @@ COPY 00-prominence-docker-worker /etc/condor/config.d/
 # Scripts
 COPY worker_health_check.py /usr/local/bin/
 COPY write-resources.py /usr/local/bin/
-RUN chmod a+xr /usr/local/bin/worker_health_check.py /usr/local/bin/write-resources.py
+RUN chmod a+xr /usr/local/bin/worker_health_check.py
 
 # Entrypoint
 COPY docker-entrypoint.sh /

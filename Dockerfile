@@ -32,7 +32,6 @@ COPY 00-prominence-docker-worker /etc/condor/config.d/
 # Scripts
 COPY worker_health_check.py /usr/local/bin/
 COPY write-resources.py /usr/local/bin/
-COPY job-prepare-hook /usr/local/bin/
 
 # Entrypoint
 COPY docker-entrypoint.sh /

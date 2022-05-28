@@ -9,13 +9,18 @@ echo "ProminenceNodeGroup = \"$PROMINENCE_NODE_GROUP\"" >> /etc/condor/config.d/
 if [ "$PROMINENCE_WORKER_TYPE" = "dedicated" ]; then
   echo "START = ProminenceWantCluster =?= \"$PROMINENCE_JOB_ID\" && NODE_IS_HEALTHY =?= True" >> /etc/condor/config.d/docker
 else
-  echo "START = NODE_IS_HEALTHY =?= True" >> /etc/condor/config.d/docker
+  echo "START = ProminenceIdentity =?= "alahiff" && NODE_IS_HEALTHY =?= True" >> /etc/condor/config.d/docker
 fi
 
-if [ "$PROMINENCE_ALLOW_PARALLEL" = "true" ]; then
+if [[ ! -z "$PROMINENCE_SCHEDD_NAME" ]]; then
   echo "DedicatedScheduler = \"DedicatedScheduler@$PROMINENCE_SCHEDD_NAME\"" >> /etc/condor/config.d/docker
   echo "ParallelSchedulingGroup = \$(ProminenceCloud)" >> /etc/condor/config.d/docker
   echo "STARTD_ATTRS = \$(STARTD_ATTRS), DedicatedScheduler, ParallelSchedulingGroup" >> /etc/condor/config.d/docker
+fi
+
+if [[ ! -z "$PROMINENCE_IDLE_TIMEOUT" ]]; then
+  echo "STARTD_NOCLAIM_SHUTDOWN = $PROMINENCE_IDLE_TIMEOUT" >> /etc/condor/config.d/docker
+  echo "MASTER.DAEMON_SHUTDOWN = STARTD_StartTime =?= 0 && MonitorSelfAge > $PROMINENCE_IDLE_TIMEOUT" >> /etc/condor/config.d/docker
 fi
 
 python3 /usr/local/bin/write-resources.py $PROMINENCE_CLOUD

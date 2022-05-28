@@ -21,7 +21,8 @@ RUN yum -y install singularity unzip bzip2 python2-pip python-devel gcc git open
 # Users
 RUN useradd user
 COPY add-users.sh /tmp/
-RUN /tmp/add-users.sh
+RUN chmod a+xr /tmp/add-users.sh && \
+    /tmp/add-users.sh
 
 # Install udocker
 RUN pip3 install git+https://github.com/indigo-dc/udocker
@@ -32,8 +33,10 @@ COPY 00-prominence-docker-worker /etc/condor/config.d/
 # Scripts
 COPY worker_health_check.py /usr/local/bin/
 COPY write-resources.py /usr/local/bin/
+RUN chmod a+xr /usr/local/bin/worker_health_check.py /usr/local/bin/write-resources.py
 
 # Entrypoint
 COPY docker-entrypoint.sh /
+RUN chmod a+xr /docker-entrypoint.sh
 ENTRYPOINT ["/docker-entrypoint.sh"]
 

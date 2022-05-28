@@ -1,6 +1,6 @@
 # PROMINENCE worker
 Workers can be run directly on bare metal or in a VM, or alternatively can be run inside a Docker container. They can either run
-indefinitely or shutdown after being idle for a specified timeout.
+indefinitely or shutdown automatically after being idle for a specified timeout.
 
 ## Running a worker using Docker
 ```

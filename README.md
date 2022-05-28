@@ -16,7 +16,7 @@ export schedd_name="<schedd name>"
 docker run -d \
            --net=host \
            --name=prominence-worker \
-           --privileged=true \           
+           --privileged=true \
            --hostname=$use_hostname \
            -e PROMINENCE_WORKER_TYPE=$worker_type \
            -e PROMINENCE_PARALLEL=$allow_parallel \
@@ -25,7 +25,7 @@ docker run -d \
            -e PROMINENCE_NODE_GROUP=$node_group \
            -e PROMINENCE_SCHEDD_NAME=$schedd_name \
            -e PROMINENCE_JOB_ID=$job_id \
-           -e PROMINENCE_COLLECTOR=$condor_host \           
+           -e PROMINENCE_COLLECTOR=$condor_host \
            -v /var/log/condor:/var/log/condor \
            -v /opt/prominence:/home \
            -v ${PWD}/token.jwt:/etc/condor/tokens.d/token.jwt \

@@ -1,11 +1,10 @@
 FROM centos:7
   
 # Dependencies
-RUN yum -y install wget
+RUN yum -y install wget epel-release
 
 # Install yum repository
-RUN cd /etc/yum.repos.d && \
-    wget http://research.cs.wisc.edu/htcondor/yum/repo.d/htcondor-development-rhel7.repo
+RUN yum install -y https://research.cs.wisc.edu/htcondor/repo/9.x/htcondor-release-current.el7.noarch.rpm
 
 # Import signing key
 RUN wget http://research.cs.wisc.edu/htcondor/yum/RPM-GPG-KEY-HTCondor && \
@@ -13,7 +12,8 @@ RUN wget http://research.cs.wisc.edu/htcondor/yum/RPM-GPG-KEY-HTCondor && \
     rm RPM-GPG-KEY-HTCondor
 
 # Install HTCondor
-RUN yum -y install condor
+RUN sed -i 's/priority=90/priority=40/g' /etc/yum.repos.d/htcondor.repo && \
+    yum -y install condor
 
 # Dependencies
 RUN yum -y install singularity unzip bzip2 python2-pip python-devel gcc git openssl openssh-server python3 python3-pip
@@ -22,7 +22,8 @@ RUN yum -y install singularity unzip bzip2 python2-pip python-devel gcc git open
 RUN useradd user
 COPY add-users.sh /tmp/
 RUN chmod a+xr /tmp/add-users.sh && \
-    /tmp/add-users.sh
+    /tmp/add-users.sh && \
+    rm -f /tmp/add-users.sh
 
 # Install udocker
 RUN pip3 install git+https://github.com/indigo-dc/udocker

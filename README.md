@@ -2,7 +2,23 @@
 Workers can be run directly on bare metal or in a VM, or alternatively can be run inside a Docker container. They can either run
 indefinitely or shutdown automatically after being idle for a specified timeout.
 
-## Running a worker using Docker
+A worker requires a token in order to join the PROMINENCE worker pool. Note that this is a different token to the access token used by
+users to manage jobs.
+
+PROMINENCE admins can create tokens by running the following command:
+```
+condor_token_create -identity worker@cloud -key token_key
+```
+
+It is also possible for users to launch their own workers. They will only be able to run jobs of the user who launches them. This functionality is leveraged to enable jobs to be run on HPC resources. Using curl and jq a worker token can be obtained from a valid user token as follows:
+```
+export PROMINENCE_WORKER_TOKEN=`curl -s -X POST -H "Authorization: Token $PROMINENCE_TOKEN" $PROMINENCE_URL/token | jq '.token' | tr -d '"'`
+```
+where the environment variable `PROMINENCE_TOKEN` contains the user token and `PROMINENCE_URL` is the URL of the PROMINENCE API.
+
+## Deployment options
+
+### Docker
 ```
 docker run -d \
            --net=host \

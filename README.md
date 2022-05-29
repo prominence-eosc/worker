@@ -10,7 +10,7 @@ PROMINENCE admins can create tokens by running the following command:
 condor_token_create -identity worker@cloud -key token_key
 ```
 
-It is also possible for users to launch their own workers. They will only be able to run jobs of the user who launches them. This functionality is leveraged to enable jobs to be run on HPC resources. Using curl and jq a worker token can be obtained from a valid user token as follows:
+It is also possible for users to launch their own workers. User-instantiated workers are only be able to run jobs of the user who launches them. This functionality is leveraged to enable jobs to be run on HPC resources. Using curl and jq a worker token can be obtained from a valid user token as follows:
 ```
 export PROMINENCE_WORKER_TOKEN=`curl -s -X POST -H "Authorization: Token $PROMINENCE_TOKEN" $PROMINENCE_URL/token | jq '.token' | tr -d '"'`
 ```

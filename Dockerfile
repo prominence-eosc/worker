@@ -16,7 +16,7 @@ RUN sed -i 's/priority=90/priority=40/g' /etc/yum.repos.d/htcondor.repo && \
     yum -y install condor
 
 # Dependencies
-RUN yum -y install singularity unzip bzip2 python2-pip python-devel gcc git openssl openssh-server python3 python3-pip
+RUN yum -y install singularity unzip bzip2 gcc git openssl openssh-server python3 python3-pip
 
 # Users
 RUN useradd user

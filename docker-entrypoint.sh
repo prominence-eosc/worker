@@ -29,8 +29,8 @@ python3 /usr/local/bin/write-resources.py $PROMINENCE_CLOUD
 chown condor:condor /etc/condor/tokens.d/token.jwt
 
 # HTCondor execute directory
-mkdir -p /home/prominence
-chmod a+xrw /home/prominence
+mkdir -p /home/prominence/images
+chmod -R a+xrw /home/prominence
 mkdir -p /home/prominence/condor
 chown condor:condor /home/prominence/condor
 mkdir -p /home/user/mounts

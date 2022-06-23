@@ -11,12 +11,6 @@ if not os.path.exists('/usr/local/bin/udocker'):
     print('NODE_STATUS = "Udocker_Missing"')
     exit(0)
 
-# Check for /etc/prominence.json
-if not os.path.exists('/etc/prominence.json'):
-    print('NODE_IS_HEALTHY = False')
-    print('NODE_STATUS = "ProminenceJson_Missing"')
-    exit(0)
-
 # Check disk size and usage
 total, used, free = shutil.disk_usage("/")
 

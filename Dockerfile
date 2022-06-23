@@ -33,7 +33,6 @@ COPY 00-prominence-worker /etc/condor/config.d/
 
 # Scripts
 COPY worker_health_check.py /usr/local/bin/
-COPY write-resources.py /usr/local/bin/
 RUN chmod a+xr /usr/local/bin/worker_health_check.py
 
 # Entrypoint

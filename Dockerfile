@@ -31,7 +31,7 @@ RUN pip3 install git+https://github.com/indigo-dc/udocker
 # Configuration
 COPY 00-prominence-worker /etc/condor/config.d/
 
-# Scripts
+# Health check script
 COPY worker_health_check.py /usr/local/bin/
 RUN chmod a+xr /usr/local/bin/worker_health_check.py
 

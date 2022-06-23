@@ -23,8 +23,6 @@ if [[ ! -z "$PROMINENCE_IDLE_TIMEOUT" ]]; then
   echo "MASTER.DAEMON_SHUTDOWN = STARTD_StartTime =?= 0 && MonitorSelfAge > $PROMINENCE_IDLE_TIMEOUT" >> /etc/condor/config.d/docker
 fi
 
-python3 /usr/local/bin/write-resources.py $PROMINENCE_CLOUD
-
 # Set ownership of token
 chown condor:condor /etc/condor/tokens.d/token.jwt
 
